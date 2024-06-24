@@ -26,12 +26,19 @@ while True:
         for i in emp:
             if id==i[0]:
                 f=1
+                print(i)
                 emp_name=str(input("enter your name :"))
                 emp_age=int(input("enter your age :"))
                 emp_salary=int(input("enter your salary :"))
                 emp_exp=int(input("enter your experience :"))
                 emp_email=input("enter your email :")
-                emp_phno=int(input("enter your number :"))    
+                emp_phno=int(input("enter your number :"))  
+                i[1]=emp_name
+                i[2]=emp_age
+                i[3]=emp_salary
+                i[4]=emp_exp
+                i[5]=emp_email
+                i[6]=emp_phno  
         if f==0:
             print("invalid id")
-            
+    # elif choice==4:
