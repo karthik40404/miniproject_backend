@@ -1,5 +1,5 @@
 print("1.add\n2.view\n3.update\n4.delete\n5.exit")
-emp=[]
+emp=[[1,"kary",34,50000,5,"dfisdb.@gamil",768686]]
 while True:
     choice=int(input("enter your choice :"))
     if choice==1:
@@ -41,4 +41,22 @@ while True:
                 i[6]=emp_phno  
         if f==0:
             print("invalid id")
-    # elif choice==4:
+    elif choice==4:
+        id=int(input("enter an id :"))
+        f = 0
+        for i in emp:
+            if id == i[0]:
+                f = 1
+                emp.remove(i)
+                break
+        if f == 0:
+            print("Invalid ID.")
+        else :
+            print('updated emp list :',emp)
+    elif choice==5:
+        print("you are exited")
+        break
+    else:
+        print('invalid')      
+
+            
