@@ -6,12 +6,13 @@ while True:
     choice = input("Enter your choice: ")
     
     if choice == '1':
-        while True:
-            donor_id = input("Enter Donor ID: ")
-            if (donor["id"] == donor_id for donor in donors):
-                print("Donor ID already exists. Please enter a unique ID.")
-            else:
-                break
+        # while True:
+        #     donor_id = input("Enter Donor ID: ")
+        #     if (donor["id"] == donor_id for donor in donors):
+        #         print("Donor ID already exists. Please enter a unique ID.")
+        #     else:
+        #         break
+        donor_id = input("Enter Donor ID: ")
         name = input("Enter Donor Name: ")
         blood_group = input("Enter Blood Group: ")
         contact = input("Enter Contact Number: ")
