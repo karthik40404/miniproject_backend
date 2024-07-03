@@ -1,4 +1,4 @@
-print("1. Add Donor\n2. View Donors\n3. Update Donor\n4. Delete Donor\n5. Exit")
+# print("1. Add Donor\n2. View Donors\n3. Update Donor\n4. Delete Donor\n5. Exit")
 
 donors = []
 
