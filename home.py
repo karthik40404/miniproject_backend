@@ -1,6 +1,5 @@
 from datetime import datetime
 
-# Define dictionaries to store user and service provider information
 users = {}
 
 service_providers = {
@@ -18,7 +17,6 @@ service_providers = {
     ]
 }
 
-# User registration
 print("Register a new user:")
 username = input("Enter username: ")
 password = input("Enter password: ")
@@ -34,7 +32,6 @@ else:
     }
     print("User registered successfully.")
 
-# User login
 print("\nLogin user:")
 username = input("Enter username: ")
 password = input("Enter password: ")
@@ -45,13 +42,11 @@ else:
     print("Invalid username or password.")
     exit()
 
-# User options menu
 while True:
     print("\nOptions:")
     print("1. Hire a service provider   2. View bookings   3. Cancel a booking   4. Logout")
     choice = input("Enter your choice: ")
     if choice == '1':
-        # Hire a service provider
         print("\nHire a service provider:")
         service_type = input("Enter service type to hire (plumber/electrician/maid/gardener): ")
 
@@ -67,14 +62,12 @@ while True:
                 print(f"No {service_type}s available in your location.")
             else:
                 provider = available_providers[0]
-                # Get current date
                 booking_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 users[username]['services_hired'].append({'type': service_type, 'provider': provider, 'date': booking_date})
                 service_providers[service_type].remove(provider)
                 print(f"{provider['name']} hired as {service_type}.")
     
     elif choice == '2':
-        # View bookings
         print("\nView bookings:")
         if username not in users:
             print("User not found.")
@@ -87,7 +80,6 @@ while True:
                     print(f"Service Type: {booking['type']}, Provider Name: {booking['provider']['name']}, Provider Location: {booking['provider']['location']}, Date: {booking['date']}")
     
     elif choice == '3':
-        # Cancel a booking
         print("\nCancel a booking:")
         service_type = input("Enter service type to cancel (plumber/electrician/maid/gardener): ")
 
@@ -105,7 +97,6 @@ while True:
                 print(f"No {service_type} booked.")
     
     elif choice == '4':
-        # Logout
         print("Logging out...")
         break
 
