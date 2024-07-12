@@ -46,7 +46,7 @@ while True:
     print("\nOptions:")
     print("1. Hire a service provider   2. View bookings   3. Cancel a booking   4. Logout")
     choice = input("Enter your choice: ")
-    if choice == '1':
+    if choice == 1:
         print("\nHire a service provider:")
         service_type = input("Enter service type to hire (plumber/electrician/maid/gardener): ")
 
@@ -67,7 +67,7 @@ while True:
                 service_providers[service_type].remove(provider)
                 print(f"{provider['name']} hired as {service_type}.")
     
-    elif choice == '2':
+    elif choice == 2:
         print("\nView bookings:")
         if username not in users:
             print("User not found.")
@@ -79,7 +79,7 @@ while True:
                 for booking in bookings:
                     print(f"Service Type: {booking['type']}, Provider Name: {booking['provider']['name']}, Provider Location: {booking['provider']['location']}, Date: {booking['date']}")
     
-    elif choice == '3':
+    elif choice == 3:
         print("\nCancel a booking:")
         service_type = input("Enter service type to cancel (plumber/electrician/maid/gardener): ")
 
@@ -96,7 +96,7 @@ while True:
             else:
                 print(f"No {service_type} booked.")
     
-    elif choice == '4':
+    elif choice == 4:
         print("Logging out...")
         break
 
