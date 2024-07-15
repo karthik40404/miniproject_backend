@@ -1,9 +1,7 @@
-# In-memory storage for users and admins
 users = {}
 admins = {'admin': 'admin123'}  # Example admin account
 logged_in_users = {}
 
-# Function to register a new user
 def register_user():
     username = input("Enter username: ")
     if username in users:
@@ -17,7 +15,6 @@ def register_user():
     users[username] = {'password': password, 'profile': profile, 'preferences': {}}
     print("User registered successfully.")
 
-# Function for login (both user and admin)
 def login():
     username = input("Enter username: ")
     password = input("Enter password: ")
@@ -32,7 +29,6 @@ def login():
     print("Invalid username or password.")
     return None, None
 
-# Function for logout
 def logout(username):
     if username in logged_in_users:
         del logged_in_users[username]
@@ -40,7 +36,6 @@ def logout(username):
     else:
         print("User not logged in.")
 
-# Function to set user preferences
 def set_preferences(username):
     if username in users:
         height = input("Enter preferred height: ")
@@ -52,7 +47,6 @@ def set_preferences(username):
     else:
         print("User not found.")
 
-# Function to edit user preferences
 def edit_preferences(username):
     if username in users:
         height = input("Enter new preferred height: ")
@@ -64,7 +58,6 @@ def edit_preferences(username):
     else:
         print("User not found.")
 
-# Function to view user preferences
 def view_preferences(username):
     if username in users:
         preferences = users[username]['preferences']
@@ -75,7 +68,6 @@ def view_preferences(username):
     else:
         print("User not found.")
 
-# Function to delete a user account
 def delete_user(username):
     if username in users:
         del users[username]
@@ -85,7 +77,6 @@ def delete_user(username):
     else:
         print("User not found.")
 
-# Function to find matches
 def find_matches():
     matches = {}
     for user, data in users.items():
@@ -95,67 +86,3 @@ def find_matches():
                 if all(other_data['profile'].get(key) == value for key, value in data['preferences'].items()):
                     matches[user].append(other_user)
     return matches
-
-# Function for admin to view all data
-def admin_view():
-    print("Admin View:")
-    print("User Profiles:")
-    for user, data in users.items():
-        print(f"{user}: {data['profile']}")
-    print("\nUser Preferences:")
-    for user, data in users.items():
-        print(f"{user}: {data['preferences']}")
-    print("\nMatches:")
-    matches = find_matches()
-    for user, match_list in matches.items():
-        print(f"{user} matches with: {', '.join(match_list) if match_list else 'No matches found'}")
-
-# Main function to drive the application
-def main():
-    while True:
-        print("\n1. Register\n2. Login\n3. Quit")
-        choice = input("Choose an option: ")
-        if choice == '1':
-            register_user()
-        elif choice == '2':
-            username, role = login()
-            if username and role == 'user':
-                while True:
-                    print("\n1. Set Preferences\n2. Edit Preferences\n3. View Preferences\n4. Delete Account\n5. Logout\n6. Quit")
-                    user_choice = input("Choose an option: ")
-                    if user_choice == '1':
-                        set_preferences(username)
-                    elif user_choice == '2':
-                        edit_preferences(username)
-                    elif user_choice == '3':
-                        view_preferences(username)
-                    elif user_choice == '4':
-                        delete_user(username)
-                        break
-                    elif user_choice == '5':
-                        logout(username)
-                        break
-                    elif user_choice == '6':
-                        break
-                    else:
-                        print("Invalid option. Try again.")
-            elif username and role == 'admin':
-                while True:
-                    print("\n1. View Data\n2. Logout\n3. Quit")
-                    admin_choice = input("Choose an option: ")
-                    if admin_choice == '1':
-                        admin_view()
-                    elif admin_choice == '2':
-                        logout(username)
-                        break
-                    elif admin_choice == '3':
-                        return
-                    else:
-                        print("Invalid option. Try again.")
-        elif choice == '3':
-            break
-        else:
-            print("Invalid option. Try again.")
-
-if __name__ == "__main__":
-    main()
